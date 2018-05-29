@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "00b6a731-2605-48c4-88da-7119336b5c7a",
+		"name": "eg_Assignment",
+		"description": "Create a POSTMAN script which calls two APIs\n\nhttp://postman-echo.com/get\n\nAnd \n\nhttp://postman-echo.com/post\n\nThe script should generate a random number using JavaScript and pass it to the get api http://postman-echo.com/get?rand=<generated_number>\n\nRead the same number from the JSON get response and save it to a postman variable\n\n\nPass this new variable to http://postman-echo.com/post and then print same back from the response JSON\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetRandomValue",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "41b80810-832d-47db-81b7-49682e2c3a96",
+						"type": "text/javascript",
+						"exec": [
+							"//0. Ensure the Global variable is set to null in pre-request script",
+							"pm.globals.unset(\"randomValue\");",
+							"",
+							"//Debug statements -- TBD:to delete",
+							"console.info(\"From pre-req %s\", pm.globals.get(\"randomValue\"));"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "5028ec16-0252-404f-8ae5-369afbef68c0",
+						"type": "text/javascript",
+						"exec": [
+							"//0. Ensure the Global variable is set to null in pre-request script",
+							"//1. Verify the GET request status with the random value as a param",
+							"pm.test(\"GET Request with random value - Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"//2. Extract the value from the response and preserve into a variable",
+							"pm.test(\"Add the random value to the Global valirable\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.globals.set(\"randomValue\", jsonData.args.rand);",
+							"    ",
+							"    //Debug statements -- TBD:to delete",
+							"    console.info(\"Value after GET request %s\", pm.globals.get(\"randomValue\"));",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://postman-echo.com/get?rand={{$randomInt}}",
+					"protocol": "http",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "rand",
+							"value": "{{$randomInt}}"
+						}
+					]
+				},
+				"description": "Generate Response with the Random value as a parameter to verify the status and being able to extract the random value from the response"
+			},
+			"response": []
+		},
+		{
+			"name": "PostRandomVariable",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1059306a-7686-4f41-bf9b-6495cd1fd2f3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a84143af-4ad3-4338-be87-fc4acc3fc169",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"POST request with random value - Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Validate the variable value and reflects in response\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.args.rand).to.eql(pm.globals.get(\"randomValue\"), 10);",
+							"    console.info(\"Value after POST request %s\", pm.globals.get(\"randomValue\"));",
+							"    console.info(\"Value from POST Response request %s\", jsonData.args.rand);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://postman-echo.com/post?rand={{randomValue}}",
+					"protocol": "http",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "rand",
+							"value": "{{randomValue}}"
+						}
+					]
+				},
+				"description": "Post the Random value which is generated from the previous request and stored in global variable as a parameter to verify the status and being able to extract the random value from the response"
+			},
+			"response": []
+		}
+	]
+}

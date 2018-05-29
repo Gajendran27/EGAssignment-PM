@@ -1,0 +1,181 @@
+{
+	"id": "504000e0-de1a-470a-b82e-fb5da4b0c2d1",
+	"name": "eg_Assignment",
+	"allTests": [],
+	"timestamp": "2018-05-29T14:29:00.250Z",
+	"collection_id": "00b6a731-2605-48c4-88da-7119336b5c7a",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "0",
+	"data": [],
+	"delay": 0,
+	"count": 1,
+	"collection": {
+		"id": "00b6a731-2605-48c4-88da-7119336b5c7a",
+		"name": "eg_Assignment",
+		"description": "Create a POSTMAN script which calls two APIs\n\nhttp://postman-echo.com/get\n\nAnd \n\nhttp://postman-echo.com/post\n\nThe script should generate a random number using JavaScript and pass it to the get api http://postman-echo.com/get?rand=<generated_number>\n\nRead the same number from the JSON get response and save it to a postman variable\n\n\nPass this new variable to http://postman-echo.com/post and then print same back from the response JSON\n",
+		"auth": null,
+		"events": null,
+		"variables": [],
+		"order": [
+			"ccb31187-7513-4239-b7fb-35fba7a46ce0",
+			"11b1cdd7-dd2f-4770-9d78-a25c055f4aa7"
+		],
+		"folders_order": [],
+		"owner": "4477116",
+		"permissions": {},
+		"favorite": false,
+		"shared": false,
+		"type": "collection",
+		"depth": 0
+	},
+	"folder": null,
+	"environment": null,
+	"globals": [
+		{
+			"key": "randomValue",
+			"value": "278",
+			"enabled": true,
+			"type": "text"
+		}
+	],
+	"results": [
+		{
+			"name": "GetRandomValue",
+			"id": "ccb31187-7513-4239-b7fb-35fba7a46ce0",
+			"url": "http://postman-echo.com/get?rand=304",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "GET Request with random value - Status code is 200",
+				"status": "pass",
+				"Add the random value to the Global valirable": true
+			},
+			"testPassFailCounts": {
+				"GET Request with random value - Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Add the random value to the Global valirable": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"263"
+			],
+			"allTests": [
+				{
+					"GET Request with random value - Status code is 200": true,
+					"Add the random value to the Global valirable": true
+				}
+			],
+			"time": "263",
+			"totalRequestTime": "263",
+			"iterationResults": {}
+		},
+		{
+			"name": "PostRandomVariable",
+			"id": "11b1cdd7-dd2f-4770-9d78-a25c055f4aa7",
+			"url": "http://postman-echo.com/post?rand=304",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"name": "POST request with random value - Status code is 200",
+				"status": "pass",
+				"Validate the variable value and reflects in response": true
+			},
+			"testPassFailCounts": {
+				"POST request with random value - Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the variable value and reflects in response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"258"
+			],
+			"allTests": [
+				{
+					"POST request with random value - Status code is 200": true,
+					"Validate the variable value and reflects in response": true
+				}
+			],
+			"time": "258",
+			"totalRequestTime": "258",
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 4,
+	"totalFail": 0,
+	"totalTime": 521,
+	"lifecycle": "done",
+	"requests": [
+		{
+			"name": "GetRandomValue",
+			"id": "ccb31187-7513-4239-b7fb-35fba7a46ce0",
+			"url": "http://postman-echo.com/get?rand=304",
+			"time": "2018-05-29T14:29:00.250Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"GET Request with random value - Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Add the random value to the Global valirable": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "PostRandomVariable",
+			"id": "11b1cdd7-dd2f-4770-9d78-a25c055f4aa7",
+			"url": "http://postman-echo.com/post?rand=304",
+			"time": "2018-05-29T14:29:00.250Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"POST request with random value - Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the variable value and reflects in response": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		}
+	],
+	"synced": false
+}
